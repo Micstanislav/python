@@ -1,1 +1,1 @@
-print("television")
+print("televisions")
