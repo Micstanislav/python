@@ -11,30 +11,25 @@ class Television:
         self.__channel = Television.MIN_CHANNEL
 
     def power(self):
-        """Toggle the power status."""
         self.__status = not self.__status
 
     def mute(self):
-        """Toggle the mute status if the TV is on."""
         if self.__status:
             self.__muted = not self.__muted
 
     def channel_up(self):
-        """Increase the channel if the TV is on."""
         if self.__status:
             self.__channel += 1
             if self.__channel > Television.MAX_CHANNEL:
                 self.__channel = Television.MIN_CHANNEL
 
     def channel_down(self):
-        """Decrease the channel if the TV is on."""
         if self.__status:
             self.__channel -= 1
             if self.__channel < Television.MIN_CHANNEL:
                 self.__channel = Television.MAX_CHANNEL
 
     def volume_up(self):
-        """Increase the volume if the TV is on."""
         if self.__status:
             if self.__muted:
                 self.__muted = False
@@ -42,7 +37,6 @@ class Television:
                 self.__volume += 1
 
     def volume_down(self):
-        """Decrease the volume if the TV is on."""
         if self.__status:
             if self.__muted:
                 self.__muted = False
@@ -50,6 +44,5 @@ class Television:
                 self.__volume -= 1
 
     def __str__(self):
-        """Return the current state of the TV."""
         display_volume = 0 if self.__muted else self.__volume
         return f"Power == {self.__status}, Channel == {self.__channel}, Volume == {display_volume}"
