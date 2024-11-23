@@ -18,61 +18,61 @@ def test_power():
 def test_mute():
     tv = Television()
     tv.power()
-    tv.volume_up()  # Volume should increase to 1
-    tv.mute()       # Mute sets volume to 0
+    tv.volume_up()
+    tv.mute()
     assert str(tv) == "Power == True, Channel == 0, Volume == 0"
-    tv.mute()       # Unmute restores previous volume
+    tv.mute()
     assert str(tv) == "Power == True, Channel == 0, Volume == 1"
 
 
 def test_channel_up():
     tv = Television()
     tv.channel_up()
-    assert str(tv) == "Power == False, Channel == 0, Volume == 0"  # No change when off
+    assert str(tv) == "Power == False, Channel == 0, Volume == 0"
     tv.power()
     tv.channel_up()
-    assert str(tv) == "Power == True, Channel == 1, Volume == 0"  # Channel should increase
+    assert str(tv) == "Power == True, Channel == 1, Volume == 0"
     for _ in range(3):
         tv.channel_up()
-    assert str(tv) == "Power == True, Channel == 0, Volume == 0"  # Wrap-around
+    assert str(tv) == "Power == True, Channel == 0, Volume == 0"
 
 
 def test_channel_down():
     tv = Television()
     tv.channel_down()
-    assert str(tv) == "Power == False, Channel == 0, Volume == 0"  # No change when off
+    assert str(tv) == "Power == False, Channel == 0, Volume == 0"
     tv.power()
     tv.channel_down()
-    assert str(tv) == "Power == True, Channel == 3, Volume == 0"  # Wrap-around
+    assert str(tv) == "Power == True, Channel == 3, Volume == 0"
     tv.channel_down()
-    assert str(tv) == "Power == True, Channel == 2, Volume == 0"  # Decrease channel
+    assert str(tv) == "Power == True, Channel == 2, Volume == 0"
 
 
 def test_volume_up():
     tv = Television()
     tv.volume_up()
-    assert str(tv) == "Power == False, Channel == 0, Volume == 0"  # No change when off
+    assert str(tv) == "Power == False, Channel == 0, Volume == 0"
     tv.power()
     tv.volume_up()
-    assert str(tv) == "Power == True, Channel == 0, Volume == 1"  # Volume should increase
+    assert str(tv) == "Power == True, Channel == 0, Volume == 1"
     tv.volume_up()
-    assert str(tv) == "Power == True, Channel == 0, Volume == 2"  # Max volume reached
+    assert str(tv) == "Power == True, Channel == 0, Volume == 2"
     tv.volume_up()
-    assert str(tv) == "Power == True, Channel == 0, Volume == 2"  # Stays at max volume
+    assert str(tv) == "Power == True, Channel == 0, Volume == 2"
 
 
 def test_volume_down():
     tv = Television()
     tv.volume_down()
-    assert str(tv) == "Power == False, Channel == 0, Volume == 0"  # No change when off
+    assert str(tv) == "Power == False, Channel == 0, Volume == 0"
     tv.power()
     tv.volume_down()
-    assert str(tv) == "Power == True, Channel == 0, Volume == 0"  # Stays at min volume
+    assert str(tv) == "Power == True, Channel == 0, Volume == 0"
     tv.volume_up()
-    tv.volume_up()  # Volume increases to 2
+    tv.volume_up()
     tv.volume_down()
-    assert str(tv) == "Power == True, Channel == 0, Volume == 1"  # Volume decreases
+    assert str(tv) == "Power == True, Channel == 0, Volume == 1"
     tv.mute()
-    assert str(tv) == "Power == True, Channel == 0, Volume == 0"  # Mute sets to 0
+    assert str(tv) == "Power == True, Channel == 0, Volume == 0"
     tv.volume_down()
-    assert str(tv) == "Power == True, Channel == 0, Volume == 0"  # Stays muted
+    assert str(tv) == "Power == True, Channel == 0, Volume == 0"
