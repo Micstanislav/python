@@ -106,4 +106,4 @@ class Television:
             str: The state of the television, including power status, channel, and volume.
         """
         display_volume = 0 if self.__muted else self.__volume
-        return f"Power == {self.__status}, Channel == {self.__channel}, Volume == {display_volume}"
+        return f"Power = {self.__status}, Channel = {self.__channel}, Volume = {display_volume}"
